@@ -1,0 +1,520 @@
+<style>
+
+
+  .gcl-index-product__top {
+    text-align: center;
+  }
+  .gcl-index-product__top .gcl-index-product-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fdb924;
+    margin-bottom: 0.5rem;
+  }
+  .gcl-index-product__top .gcl-index-product-description {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .gcl-index-product__bottom {
+    display: grid;
+    grid-template-columns: auto;
+    gap: .5rem;
+    justify-content: center;
+  }
+  .gcl-index-product__item {
+    position: relative;
+    padding: 1rem 1rem;
+
+    background-color: white;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .gcl-index-product-item-item__top .gcl-index-product-item__icon {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+  .gcl-index-product-item-item__top .gcl-index-product-item__icon img {
+    width: 100%;
+    height: 100%;
+  }
+  .gcl-index-product-item-item__top {
+    display: flex;
+    gap: 1rem;
+  }
+  .gcl-index-product-item__solid {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    width: 5px;
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    height: 4rem;
+    background-color: #fdb924;
+    border: 1px solid #fdb924; /* Màu sắc và kiểu đường viền đứt đoạn */
+    pointer-events: none; /* Đảm bảo không có tương tác với phần tử này */
+  }
+
+  .gcl-index-product-item-bottom__title h4 {
+    font-size: 1.7rem;
+
+    margin-bottom: -.4rem;
+  }
+  .gcl-index-product-item-bottom__item {
+    display: flex;
+  }
+
+  .gcl-index-product-item-bottom-item__img {
+    width: 45px;
+    height: 50px;
+  }
+  .gcl-index-product-item-bottom-item__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Giữ tỷ lệ hình ảnh và không bị méo */
+  }
+  .gcl-index-product-item-bottom__item h5 {
+    margin-bottom: 0;
+    text-decoration: underline;
+  }
+  .gcl-index-product-item_bottom {
+    margin-top: 2rem;
+    display: grid;
+ grid-template-columns: repeat(2,1fr);
+  }
+
+  .gcl-index-product-item__button {
+    background: #2f4152;
+    text-decoration: none;
+    padding: 0.8rem 0;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    margin-top: 2.5rem;
+    cursor: pointer;
+  }
+  .gcl-index-product-item__button {
+    background: #2f4152;
+    text-decoration: none;
+    padding: 0.8rem 0;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    margin-top: 2.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .gcl-index-product-item__button:hover {
+    transform: scale(1.1);
+  }
+
+  .gcl-button {
+    color: white;
+    text-decoration: none;
+  }
+ 
+
+ 
+  @media (min-width: 480px) {
+    .gcl-index-product__bottom {
+        grid-template-columns: repeat(1, 1fr);
+        
+      }
+  }
+  @media (min-width: 640px) {
+
+    .gcl-index-product__bottom {
+    
+        grid-template-columns: repeat(2, 1fr);
+
+      }
+  }
+  @media (min-width: 768px) {
+    .gcl-index-product__bottom {
+    
+      padding: 0 3rem;
+
+    }
+   
+  }
+  @media (min-width: 1024px) {
+    .gcl-index-product__top .gcl-index-product-title {
+    font-size: 2.3rem;
+    }
+    .gcl-index-product__top .gcl-index-product-description{
+      font-size: 1.3rem;
+    }
+    .gcl-index-product__bottom {
+      padding: 0 10rem;
+ 
+        
+      }
+  }
+  @media (min-width: 1300px) {
+    .gcl-index-product__bottom {
+      padding: 0;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        
+      }
+  }
+
+</style>
+
+<div class="container">
+  <div class="gcl-index-product">
+    <div class="gcl-index-product__top">
+      <h2 class="gcl-index-product-title">
+        ĐẦU TƯ THÔNG MINH VỚI DANH MỤC ĐA DẠNG
+      </h2>
+      <div class="gcl-index-product-description">
+        Giao dịch liên thông với thị trường quốc tế đa dạng sản phẩm
+      </div>
+    </div>
+    <div class="gcl-index-product__bottom">
+      <div class="gcl-index-product__item">
+        <div class="gcl-index-product-item__solid"></div>
+        <div class="gcl-index-product-item-item__top">
+          <div class="gcl-index-product-item__icon">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-product-item-bottom__title">
+            <h4>Nông sản</h4>
+            <div>Sạch sẽ an toàn</div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item_bottom">
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item__button">
+          <a href="#" class="gcl-button">Xem thêm</a>
+        </div>
+      </div>
+      <div class="gcl-index-product__item">
+        <div class="gcl-index-product-item__solid"></div>
+        <div class="gcl-index-product-item-item__top">
+          <div class="gcl-index-product-item__icon">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-product-item-bottom__title">
+            <h4>Nông sản</h4>
+            <div>Sạch sẽ an toàn</div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item_bottom">
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item__button">
+          <a href="#" class="gcl-button">Xem thêm</a>
+        </div>
+      </div>
+      <div class="gcl-index-product__item">
+        <div class="gcl-index-product-item__solid"></div>
+        <div class="gcl-index-product-item-item__top">
+          <div class="gcl-index-product-item__icon">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-product-item-bottom__title">
+            <h4>Nông sản</h4>
+            <div>Sạch sẽ an toàn</div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item_bottom">
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item__button">
+          <a href="#" class="gcl-button">Xem thêm</a>
+        </div>
+      </div>
+      <div class="gcl-index-product__item">
+        <div class="gcl-index-product-item__solid"></div>
+        <div class="gcl-index-product-item-item__top">
+          <div class="gcl-index-product-item__icon">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-product-item-bottom__title">
+            <h4>Nông sản</h4>
+            <div>Sạch sẽ an toàn</div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item_bottom">
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+          <div class="gcl-index-product-item-bottom__item">
+            <div class="gcl-index-product-item-bottom-item__img">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h5>Lúa mì</h5>
+            </div>
+          </div>
+        </div>
+        <div class="gcl-index-product-item__button">
+          <a href="#" class="gcl-button">Xem thêm</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

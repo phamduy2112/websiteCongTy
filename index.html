@@ -1,0 +1,331 @@
+<style>
+    .gcl-news__relative,
+    .gcl-news__container {
+        position: relative;
+    }
+    .gcl-news{
+        max-width: 1200px;
+        margin: 0 auto;
+
+    }
+    .gcl-news__item {
+        display: flex;
+        align-items: flex-start;
+        padding: 0.625rem; /* 10px */
+        background-color: #fff;
+        border-radius: 0.3125rem; /* 5px */
+        margin-bottom: 0.625rem; /* 10px */
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-decoration: none;
+    }
+
+    .gcl-news__item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1); /* 4px 10px */
+    }
+
+    .gcl-news__container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 0.9375rem; /* 15px */
+    }
+
+    .gcl-news__logo-img {
+        width: 6rem; /* 100px */
+        height: 6.25rem !important; /* 100px */
+        margin-right: 0.625rem; /* 10px */
+        object-fit: contain;
+        border: 0.0625rem solid rgb(206, 204, 204) !important; /* 1px */
+        padding: 0 .5rem;
+    }
+
+    .gcl-news__content {
+        flex: 1;
+    }
+
+    .gcl-news__title {
+        font-size: 1rem; /* 16px */
+        color: #8B0000;
+        margin: 0 0 0.625rem; /* 10px */
+        font-weight: bold;
+    }
+
+    .gcl-news__description {
+        font-size: 0.875rem; /* 14px */
+        color: #333;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .gcl-news__pagination-controls {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        gap: 1.25rem; /* 20px */
+    }
+
+    .gcl-news__page-btn {
+        width: 1.875rem; /* 30px */
+        height: 1.875rem; /* 30px */
+        background-color: transparent;
+        border: 0.0625rem solid #fdb924; /* 1px */
+        opacity: 0.5;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1rem; /* 16px */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+        transition: background-color 0.3s, opacity 0.3s;
+    }
+
+    .gcl-news__page-btn:hover {
+        opacity: 1;
+        background-color: #fdb924;
+    }
+
+    .gcl-news__pagination
+    .gcl-news__page-btn {
+        width: 1.5625rem; /* 25px */
+        height: 1.5625rem; /* 25px */
+        background-color: transparent;
+        border: 0.0625rem solid #fdb924; /* 1px */
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0.9375rem; /* 15px */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+        transition: background-color 0.3s;
+    }
+
+    .gcl-news__pagination 
+    .gcl-news__page-btn.active {
+        background-color: #fdb924;
+        color: #fff;
+        font-weight: bold;
+        border-color: #fdb924;
+        opacity: 1;
+    }
+
+    #gcl-news__pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 0.625rem; /* 10px */
+    }
+
+    @media (max-width: 48rem) { /* 768px */
+        .gcl-news__container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 30rem) { /* 480px */
+        .gcl-news__item {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gcl-news__logo-img {
+            margin-right: 0;
+            margin-bottom: 0.625rem; /* 10px */
+        }
+    }
+</style>
+
+<div class="gcl-news">
+    <div class="gcl-news__relative">
+        <div class="gcl-news__container" id="gcl-news__container"></div>
+     
+    </div>
+    <div class="gcl-news__pagination" id="gcl-news__pagination"></div>
+</div>
+
+<script>
+    const truncateText = (text, maxLength) => {
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+      };
+     
+    // Mock news data
+    const newsData = [
+        {
+            id:1,
+            logo: "https://doanhnghiephoinhap.vn/modules/frontend/themes/dnhn/images/logo.png?v=2.620241227160451",
+            title: "[Doanh nghiệp Hội nhập] Gia Cát Lợi: Tiên phong trong đầu tư hàng hóa phái sinh",
+            description: 
+            "Với chuyên môn hàng đầu và pháp lý minh bạch, Gia Cát Lợi nổi bật trong lĩnh vực đầu tư hàng hóa phái sinh. Công ty cung cấp các khóa học bài bản, trang bị kiến thức chuyên sâu, hỗ trợ giao dịch hiệu quả, giúp nhà đầu tư nắm bắt cơ hội và tạo lợi thế trên thị trường tiềm năng này.",
+            link:"https://doanhnghiephoinhap.vn/dau-tu-hang-hoa-phai-sinh-82666.html"
+        },
+        {
+            id:2,
+            logo: "https://static.vnncdn.net/v1/logo/vnn_2025.svg",
+            title: "[VietnamNet] Sôi động cuộc đua vào top 5 thị phần môi giới hàng hóa",
+            description:
+            
+            "[GCL_WEB VN]_Nội dung 'Báo nói gì về chúng tôi' 100% F7 Cuộc đua vào top 5 thị phần môi giới hàng hóa tại Việt Nam đang sôi động, với Gia Cát Lợi dẫn đầu, theo sau là Saigon Futures, HCT và Finvest. Giao dịch sôi động với những sản phẩm tiềm năng như dầu WTI và thép cuộn, cùng sự xuất hiện của các sản phẩm mới đầy hứa hẹn mở ra cơ hội lớn cho các nhà đầu tư. Bật chế độ hỗ trợ trình đọc màn hình Để bật chế độ hỗ trợ đọc màn hình, nhấn Ctrl+Alt+Z Để tìm hiểu thêm về các phím tắt, nhấn Ctrl+dấu gạch chéoLinh cẩu ẩn danh đã tham gia vào tài liệu."
+            
+            
+            ,
+            link:"https://vietnamnet.vn/soi-dong-cuoc-dua-vao-top-5-thi-phan-moi-gioi-hang-hoa-2198302.html",
+
+        },
+        {
+            id:3,
+            logo: "https://static.nhandan.vn/web/styles/img/logo-nhandan_ver3.png?190923",
+            title: "[Nhân Dân] Sôi động cuộc đua giành thị phần môi giới hàng hóa quý II/2024",
+            
+            description: "Gia Cát Lợi duy trì vị trí số 1 trong thị trường môi giới hàng hóa tại Việt Nam, với thị phần tăng từ 25,8% lên 31,4% trong quý II/2024. Công ty cũng sở hữu số lượng tài khoản giao dịch lớn nhất, chiếm hơn 40% tổng số tài khoản toàn thị trường, tiếp tục khẳng định vai trò tiên phong và đáng tin cậy trong ngành môi giới hàng hóa.",
+            link:"https://nhandan.vn/soi-dong-cuoc-dua-gianh-thi-phan-moi-gioi-hang-hoa-quy-ii2024-post817337.html"
+        },
+        {
+            id:4,
+            logo: "https://s1.vnecdn.net/vnexpress/restruct/i/v9540/v2_2019/pc/graphics/logo-noel-vne.png",
+            title: "[VnExpress] Giao dịch hàng hóa tại Việt Nam đạt 4.000 tỷ đồng mỗi ngày",
+            description: "Theo báo cáo của MXV, năm 2023 giá trị giao dịch trung bình của hàng hóa trên sàn đạt 4.000 tỷ đồng mỗi ngày, trong đó có những ngày đạt kỷ lục gần 10.000 tỷ đồng. Số lượng đơn vị tham gia hơn 30.000 tài khoản. Sàn niêm yết 45 sản phẩm giao dịch liên thông với thế giới chia làm 4 nhóm: nông sản, năng lượng, kim loại và nguyên liệu công nghiệp.",
+            link:"https://vnexpress.net/giao-dich-hang-hoa-tren-san-viet-nam-dat-4-000-ty-dong-moi-ngay-4700187.html"
+        },
+        {
+            id:5,
+            logo: "https://dongysonha.com/temp/uploaded-bao-chi_logo-vtc_rs1_300x180.png",
+            title: "[Doanh Nghiệp Tiếp Thị] Mua bán qua Sở giao dịch hàng hóa: Giải pháp bền vững và lợi nhuận cao",
+            description: "Mua bán qua Sở Giao dịch hàng hóa mở ra cơ hội kinh doanh bền vững, giúp doanh nghiệp gia tăng lợi nhuận và giảm thiểu rủi ro hiệu quả. Với hệ thống giao dịch minh bạch, thanh khoản cao, đây là giải pháp lý tưởng để các nhà đầu tư tối ưu hóa chiến lược tài chính và khai thác tiềm năng thị trường đầy triển vọng.",
+            link:"https://doanhnghieptiepthi.vn/mua-ban-qua-so-giao-dich-hang-hoa-giai-phap-kinh-doanh-ben-vung-nhan-boi-loi-nhuan-161240113091137632.htm"
+        
+        },
+  
+        {
+            id:7,
+            logo: "https://static-cms-sggp.epicdn.me/v4/web-dt/styles/img/sgdt-logo.svg",
+            title: "[SGGP] Doanh nghiệp được bảo đảm có lợi nhuận khi tham gia sàn giao dịch hàng hóa",
+            description: "Sở Giao dịch Hàng hóa Việt Nam cung cấp một môi trường pháp lý minh bạch thông qua nghị định số 51/2018/NĐ-CP, giảm thiểu rủi ro và gia tăng lợi nhuận cho doanh nghiệp thông qua các công cụ giao dịch tiên tiến. Đây là giải pháp lý tưởng cho những ai tìm kiếm ổn định và phát triển bền vững trong thị trường biến động.",
+            link:"https://dttc.sggp.org.vn/doanh-nghiep-duoc-bao-dam-co-loi-nhuan-khi-tham-gia-san-giao-dich-hang-hoa-post111215.html"
+        },
+        {
+            id:8,
+            logo: "https://static-cttcp.cdnchinhphu.vn/baochinhphu/image/logo_bcp.png",
+        },
+            {
+            id:8,
+            logo: "https://static-cttcp.cdnchinhphu.vn/baochinhphu/image/logo_bcp.png",
+            title: "[Chinh Phu] Top 5 chiếm 81% thị phần môi giới hàng hóa Quý II 2024",
+            description: "Trong quý II/2024, top 5 công ty môi giới hàng hóa tại MXV chiếm 81% thị phần, với Gia Cát Lợi giữ vị trí số 1, tăng thị phần lên 31,4%. Đậu tương dẫn đầu giao dịch, vượt qua dầu thô WTI, đạt 16,5% khối lượng giao dịch. Các dự báo cho nửa cuối năm cho thấy thị trường sẽ tiếp tục sôi động, với kim loại, đặc biệt là bạch kim và đồng, dự báo sẽ là điểm sáng.",
+            link:"https://baochinhphu.vn/top-5-chiem-81-thi-phan-moi-gioi-hang-hoa-quy-ii-2024-102240704082352054.htm",
+
+        },
+        {
+            id:9,
+            logo: "https://image.vietstock.vn/common/vietstock.svg?2",
+            title: "[Công Thương] Phái sinh hàng hóa: Kênh đầu tư hấp dẫn",
+            description: "Phái sinh hàng hóa là kênh đầu tư tiềm năng tại Việt Nam, hấp dẫn nhờ tính thanh khoản và khả năng phòng ngừa rủi ro. Năm 2020, phái sinh hàng hóa được đánh giá là thị trường mới mẻ nhưng đầy triển vọng tại Việt Nam, thu hút sự quan tâm lớn từ nhà đầu tư, mang lại cơ hội nâng cao lợi nhuận.",
+            link:"https://vietstock.vn/2020/03/phai-sinh-hang-hoa-kenh-dau-tu-hap-dan-2020-4645-732665.htm"
+        },
+        {
+            logo: "https://www.htv.com.vn/Data/Sites/1/media/tet-2024/logo-htv-newz-5-2024.gif",
+            title: "[HTV News] Sở Giao dịch Hàng hóa Việt Nam cung cấp thông tin về giải pháp kinh doanh bền vững",
+            description: "Hội thảo “Mua bán qua Sở giao dịch hàng hóa - Giải pháp kinh doanh bền vững” thu hút hơn 1.000 doanh nghiệp, chia sẻ lợi ích từ giao dịch điện tử, giảm rủi ro và biến động giá. Sau 5 năm phát triển, thị trường giao dịch hàng hóa phái sinh đã ghi nhận hơn 30.000 tài khoản. Các chuyên gia đề xuất xây dựng Sàn giao dịch nông sản để thu hút đầu tư trong nước và quốc tế.",
+            link:"https://www.htv.com.vn/so-giao-dich-hang-hoa-viet-nam-cung-cap-thong-tin-ve-giai-phap-kinh-doanh-ben-vung"
+        },
+        {
+            logo: "https://cafebiz.cafebizcdn.vn/web_images/cafebiz_logo_30052022.svg",
+            title: "[Cafebiz] Dầu thô và đậu tương 'nóng rẫy', 5 công ty 'trùm' môi giới hàng hoá tại Việt Nam lộ diện",
+            description: "Quý 1/2024, giao dịch tại MXV tăng 10% so với quý trước, nhờ sự bùng nổ của dầu thô và đậu tương. Các công ty môi giới lớn dẫn đầu là Gia Cát Lợi và HCT, Finvest, Hitech Finance và Saigon Futures chiếm lĩnh thị trường. Việt Nam cũng đứng thứ 3 thế giới về nhập khẩu đậu tương, mở ra cơ hội đầu tư hấp dẫn.",
+            link:"https://cafebiz.vn/dau-tho-va-dau-tuong-nong-ray-5-cong-ty-trum-moi-gioi-hang-hoa-tai-viet-nam-lo-dien-176240405102647683.chn"
+        },
+   
+        // Additional news items can be added here...
+    ];
+
+    const itemsPerPage = window.innerWidth > 1024 ? 6 : 4; // Change items per page dynamically
+let currentPage = 1;
+
+function displayNews(page) {
+    const newsContainer = document.getElementById("gcl-news__container");
+    newsContainer.innerHTML = "";
+
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pageItems = newsData.slice(startIndex, endIndex);
+
+    pageItems.forEach(news => {
+        const shortDescription = truncateText(news.description, 180); // Rút gọn mô tả
+
+        const newsItem = document.createElement("div");
+
+        newsItem.innerHTML = `
+        <a href="${news.link}" class="gcl-news__item">
+            
+             <img src="${news.logo}" alt="News logo" class="gcl-news__logo-img" />
+    <div class="gcl-news__content">
+        <h3 class="gcl-news__title">${news.title}</h3>
+        <p class="gcl-news__description">${shortDescription}</p>
+    </div>
+        const newsData = [
+            // ... your existing news items ...
+        ];
+
+        // Your existing display functions remain the same
+        function displayNews(page) {
+            // ... existing code ...
+        }
+
+        function displayPagination() {
+            // ... existing code ...
+        }
+
+        function truncateText(text, maxLength) {
+            if (text.length <= maxLength) return text;
+            return text.substr(0, maxLength) + '...';
+        }
+
+        // Initialize
+        displayNews(currentPage);
+        displayPagination();
+    </script>
+</body>
+</html>
+      
+            `
+        ;
+        newsContainer.appendChild(newsItem);
+    });
+}
+
+function displayPagination() {
+    const pagination = document.getElementById("gcl-news__pagination");
+    pagination.innerHTML = "";
+
+    const totalPages = Math.ceil(newsData.length / itemsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement("button");
+        button.innerText = i;
+        button.classList.add("gcl-news__page-btn");
+
+        if (i === currentPage) {
+            button.classList.add("active");
+        }
+
+        button.addEventListener("click", () => {
+            currentPage = i;
+            displayNews(currentPage);
+            displayPagination();
+        });
+
+        pagination.appendChild(button);
+    }
+}
+
+
+
+// Initialize
+displayNews(currentPage);
+displayPagination();
+
+</script>

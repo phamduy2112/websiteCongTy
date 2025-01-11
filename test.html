@@ -1,0 +1,366 @@
+<style>
+
+   
+    .gcl-index-transaction__content__box {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap; /* Đảm bảo không bị tràn ra ngoài trên màn hình nhỏ */
+    }
+    
+    .dropdown-container {
+        display: flex;
+        gap: 1.25rem; /* 20px */
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-button {
+        background-color: #3498db;
+        color: white;
+        padding: 0.625rem 1.25rem; /* 10px 20px */
+        border: none;
+        cursor: pointer;
+        font-size: 1rem; /* 16px */
+        display: flex;
+        align-items: center;
+    }
+    
+    .dropdown-button .arrow {
+        margin-left: 0.625rem; /* 10px */
+        transition: transform 0.3s ease;
+    }
+    
+    .dropdown-menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 10rem; /* 160px */
+        display: none;
+        z-index: 1000;
+    }
+    
+    .gcl-index-transaction .button-box-one-left {
+        padding: 1rem 2rem; /* 16px 32px */
+        background: #2F4152;
+        text-decoration: none;
+        display: inline-block;
+        color: white;
+ 
+        border-radius: 0.25rem; /* 4px */
+    }
+    
+    .dropdown-menu li {
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .dropdown-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-menu li a {
+        text-decoration: none;
+        color: #333;
+        padding: 0.625rem 1.25rem; /* 10px 20px */
+        display: block;
+    }
+    
+    .dropdown-menu li a:hover {
+        background-color: #ddd;
+    }
+    
+    .gcl-index-transaction__title {
+        font-size: 3.5rem; /* 56px */
+        width: 70%;
+        margin-bottom: 1rem; /* 16px */
+    }
+    
+    .gcl-index-transaction__content__text {
+        font-size: 1.3rem; /* 20.8px */
+        width: 50%;
+    }
+    
+    .gcl-index-transaction__title span {
+        color: #fdb924;
+    }
+    
+    .gcl-index-transaction {
+        width: 100%;
+        height: 62.5rem; /* 1000px */
+        background-image: url('https://giacatloi.vn/wp-content/uploads/2025/01/Section-1.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    
+    .gcl-index-transaction__content {
+        padding: 6rem 0; /* 96px 0 */
+    }
+    
+    .gcl-dropdown {
+        position: relative;
+        width: 65%;
+        text-align: left;
+    }
+    
+    .gcl-dropdown-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: white;
+        color: #fdb924;
+        font-size: 1.2rem; /* 19.2px */
+        border-radius: 0.3125rem; /* 5px */
+        cursor: pointer;
+        padding: 0 2rem; /* 0 32px */
+        transition: background-color 0.3s ease;
+    }
+    
+    .gcl-dropdown-toggle:hover {
+        background-color: #fdb924;
+        color: black;
+    }
+    
+    .gcl-dropdown-menu-icon {
+        width: 1.5625rem; /* 25px */
+        height: 1.5625rem; /* 25px */
+    }
+    
+    .gcl-dropdown-icon {
+        width: 1rem; /* 16px */
+        height: 1rem; /* 16px */
+        transform: rotate(0);
+        transition: transform 0.3s ease;
+    }
+    
+    .gcl-dropdown-menu .gcl-dropdown-menu-flex {
+        display: flex;
+        margin-left: 1rem; /* 16px */
+        gap: 1rem; /* 16px */
+    }
+    
+    .gcl-dropdown-menu-flex span {
+        font-size: 1.2rem; /* 19.2px */
+    }
+    
+    .gcl-dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 0.3125rem; /* 5px */
+        box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: none;
+        z-index: 10;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1%;
+        opacity: 0;
+        padding: 0.625rem 0; /* 10px 0 */
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .gcl-dropdown-menu li {
+        border-bottom: 1px solid #ff0000;
+        width: 47%;
+        padding: 1rem 0; /* 16px 0 */
+    }
+    
+    .gcl-dropdown-menu a {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        font-size: 1rem; /* 16px */
+        transition: background-color 0.3s ease;
+    }
+    
+    .gcl-dropdown.open .gcl-dropdown-menu {
+        display: flex;
+        max-height: 12.5rem; /* 200px */
+        width: 100%;
+        opacity: 1;
+    }
+    
+    .gcl-dropdown.open .gcl-dropdown-icon {
+        transform: rotate(90deg);
+    }
+    
+    @media (max-width: 767px) {
+      .gcl-index-transaction__content{
+        padding: 2rem 0;
+      }
+        .gcl-index-transaction__title {
+          font-size: 2rem; /* Smaller font size for mobile */
+          width: 100%;
+        }
+    
+        .gcl-index-transaction__content__text {
+          font-size: 1rem; /* Smaller text for mobile */
+          width: 100%;
+        }
+    
+        .gcl-dropdown {
+          width: 100%;
+        }
+    
+        .gcl-dropdown-toggle {
+          font-size: 1rem;
+          padding: 0 1rem; /* Smaller padding for mobile */
+        }
+        .gcl-index-transaction__content__box{
+            display: block;
+        }
+        .gcl-index-transaction{
+            height: 500px;
+        }
+      .gcl-index-transaction .button-box-one-left{
+          margin-top: 2rem;
+        }
+      }
+</style>
+
+<div class="gcl-index-transaction">
+    <div class="container gcl-margin">
+        <div class="gcl-index-transaction__content"> 
+            <h3 class="gcl-index-transaction__title">Hơn <span>
+                40000
+            </span>  nhà đầu tư VN đang 
+                giao dịch trên thị trường</h3>
+                <div class="gcl-index-transaction__content__box">
+                    <div class="gcl-index-transaction__content__text">
+                    Giao dịch phái sinh hàng hoá  đã và đang là kênh đầu tư hiệu quả mang đến cơ hội thành công lớn cho nhà đầu tư
+                </div>   
+                <a href="" class="button-box-one-left">Khám phá ngay &#10095;</a>
+
+                </div>
+             
+                
+        </div>
+        <div class="gcl-dropdown open">
+            <div class="gcl-dropdown-toggle" onclick="toggleDropdown(this)">
+              <h3>Công cụ giao dịch</h3>
+              <svg class="gcl-dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.82054 20.7313C8.21107 21.1218 8.84423 21.1218 9.23476 20.7313L15.8792 14.0868C17.0505 12.9155 17.0508 11.0167 15.88 9.84497L9.3097 3.26958C8.91918 2.87905 8.28601 2.87905 7.89549 3.26958C7.50497 3.6601 7.50497 4.29327 7.89549 4.68379L14.4675 11.2558C14.8581 11.6464 14.8581 12.2795 14.4675 12.67L7.82054 19.317C7.43002 19.7076 7.43002 20.3407 7.82054 20.7313Z"
+                  fill="#0F0F0F"
+                ></path>
+              </svg>
+            </div>
+            <ul class="gcl-dropdown-menu">
+              <li>
+                <a href="#" class="gcl-dropdown-menu-flex">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="gcl-dropdown-menu-icon"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                      stroke="#2F4152"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                  <span>Hợp đồng Tương lai 1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="gcl-dropdown-menu-flex">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="gcl-dropdown-menu-icon"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                      stroke="#2F4152"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                  <span>Hợp đồng Tương lai 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="gcl-dropdown-menu-flex">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="gcl-dropdown-menu-icon"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                      stroke="#2F4152"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                  <span>Hợp đồng Tương lai 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="gcl-dropdown-menu-flex">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="gcl-dropdown-menu-icon"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                      stroke="#2F4152"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                  <span>Hợp đồng Tương lai 2</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+  
+    </div>
+
+
+ </div>
+
+ <script>
+    // Lấy tất cả các nút và menu
+function toggleDropdown(element) {
+    // Lấy tất cả các dropdown trong trang
+    const allDropdowns = document.querySelectorAll('.gcl-dropdown');
+  
+    // Đóng tất cả các dropdown khác
+    allDropdowns.forEach(dropdown => {
+      if (dropdown !== element.closest('.gcl-dropdown')) {
+        dropdown.classList.remove('open');
+      }
+    });
+  
+    // Toggle 'open' cho dropdown hiện tại
+    const dropdown = element.closest('.gcl-dropdown');
+    dropdown.classList.toggle('open');
+  }
+ </script>

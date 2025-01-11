@@ -1,0 +1,342 @@
+<style>
+    
+    
+ 
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+       
+    }
+    
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    header h1 {
+        color: #fdb924;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+    
+    header p {
+        color: #666;
+        font-size: .9rem;
+    }
+    
+    
+    .featured-right{
+        grid-column: 2 / span 2;
+    }
+   
+    
+    .article-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+    
+    .article-content  h3{
+        font-size: 1.4rem;
+
+        padding:0;
+        margin-bottom:.6rem;
+    }
+    
+    .article-content  p{
+        font-size: 1.2rem;
+
+        padding:0;
+        margin-bottom:.6rem;
+    }
+    
+    .date {
+        margin-top: 3rem;
+        margin-bottom: 4rem;
+        color: #888;
+        font-size: 1rem;
+        display: flex;
+        gap: 0.5rem;
+       align-items: center;
+    }
+    .read-more-two svg{
+        width: 15px;
+        height: 15px;
+        
+    }
+    .read-more {
+        background: #f4a460;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 2rem;
+    }
+    
+    .article-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 1rem;
+    }
+    
+    .article-card {
+        background: #fff;
+        grid-column: 1;
+        border-radius: 10px;
+
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        display: none;
+    }
+    
+    .article-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+    
+    .card-content {
+        padding: 1rem 2.5rem;
+    }
+    
+    .info-cards {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+    
+    .info-card {
+        background-image: url("https://img.saigonfutures.com/2022/04/tttt.png");
+
+        color: white;
+        padding: 1.3rem;
+        border-radius: 10px;
+        position: relative;
+       
+    }
+    .info-card::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.2);; /* Màu xám với độ mờ 60% */
+
+
+
+
+    }
+    .icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    .date-icon{
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+    .article-card h2{
+        font-size: 26px;
+    }
+    .article-card p{
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    .featured-article {
+        display: inline-block;
+        
+        margin-bottom: .5rem;
+        min-height: 250px; /* Thay height thành min-height */
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+      }
+      .article-image{
+        width: 100%;
+        height: 200px;
+      }
+
+@media (min-width: 768px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    header p {
+      font-size: 1rem;
+    }
+    .info-cards {
+     
+        grid-template-columns: repeat(2, 1fr);
+    
+    }
+  header h1{
+    font-size: 2rem;
+  }
+  header p{
+    font-size: 1.1rem;
+  }
+  
+    .featured-article {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: .5rem;
+        min-height: 150px; /* Thay height thành min-height */
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+      }
+  
+    .article-image {
+      flex: 0 0 300px;
+    }
+  
+    .article-image img {
+      height: 100%;
+    }
+  
+    .info-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  
+
+    .article-image{
+        width: 100%;
+        height: 100%;
+
+      }
+  }
+  
+
+  @media (min-width: 1024px) {
+    header h1 {
+      font-size: 2rem;
+    }
+  
+    header p {
+      font-size: 1.1rem;
+    }
+
+    .articles-grid {
+        display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  
+    .article-card {
+        display: inline-block;
+      grid-column: 1;
+    }
+  
+    .featured-right {
+      grid-column: 2 / span 2;
+    }
+  
+    .article-card h2 {
+      font-size: 26px;
+    }
+  
+    .article-card p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+  
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Kiến Thức Đầu Tư</title>
+   
+</head>
+<body>
+    <div class="container">
+        <header class="gcl-knowledge__header">
+            <h1>HÀNH TRÌNH KIẾN THỨC ĐẦU TƯ CÙNG GIA CẤT LỢI</h1>
+            <p>UƠM MẦM HẠT GIỐNG TRI THỨC ĐỂ TỰ TIN GIA NHẬP HÀNH TRÌNH VÀ SẴN SÀNG CHINH PHỤC NHỮNG ĐỈNH CAO</p>
+        </header>
+
+        <main>
+           
+
+            <div class="articles-grid">
+                <div class="article-card">
+
+                    <img src="https://img.saigonfutures.com/2023/03/huong-dan-giao-dich-hang-hoa-phai-sinh-cho-nguoi-moi-bat-dau-thumbnail-768x415.jpg" alt="Hướng dẫn đầu tư">
+                    <div class="card-content">
+                        <span class="date">
+                            <svg 
+                            class="date-icon"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                            29/03/2022</span>
+                        <h2>Đầu tư hàng hóa phái sinh là gì? Ưu nhược điểm và rủi ro</h2>
+                        <p>Hàng hóa phái sinh là một công cụ đầu tư tài chính đã được hình thành và giao dịch lâu [...]</p>
+                        <button class="read-more">Xem thêm</button>
+                    </div>
+                </div>
+                <div class="featured-right">
+                    <article class="featured-article">
+                    
+                        <div class="article-image">
+                            <img src="https://img.saigonfutures.com/2023/03/huong-dan-giao-dich-hang-hoa-phai-sinh-cho-nguoi-moi-bat-dau-thumbnail-768x415.jpg" alt="Hàng hóa phái sinh">
+                        </div>
+                        <div class="article-content">
+                            <h3>Hướng dẫn các bước đầu tư hàng hóa phái sinh – Saigon Futures</h3>
+                            <p>Mở tài khoản giao dịch hàng hóa phái sinh ở đâu? Quy trình mở tài khoản giao</p>
+                        </div>
+                    </article>
+    
+                    <article class="featured-article">
+                        <div class="article-image">
+                            <img src="https://img.saigonfutures.com/2023/03/huong-dan-giao-dich-hang-hoa-phai-sinh-cho-nguoi-moi-bat-dau-thumbnail-768x415.jpg" alt="Hàng hóa phái sinh">
+                        </div>
+                        <div class="article-content">
+                            <h3>Hướng dẫn các bước đầu tư hàng hóa phái sinh – Saigon Futures</h3>
+                            <p>Mở tài khoản giao dịch hàng hóa phái sinh ở đâu? Quy trình mở tài khoản giao</p>
+                        </div>
+                    </article>
+    
+                    <article class="featured-article">
+                        <div class="article-image">
+                            <img src="https://img.saigonfutures.com/2023/03/huong-dan-giao-dich-hang-hoa-phai-sinh-cho-nguoi-moi-bat-dau-thumbnail-768x415.jpg" alt="Hàng hóa phái sinh">
+                        </div>
+                        <div class="article-content">
+                            <h3>Hướng dẫn các bước đầu tư hàng hóa phái sinh – Saigon Futures</h3>
+                            <p>Mở tài khoản giao dịch hàng hóa phái sinh ở đâu? Quy trình mở tài khoản giao</p>
+                        </div>
+                    </article>
+                    
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="icon">📊</div>
+                            <h3>BÁO CÁO & PHÂN TÍCH</h3>
+                            <p>Báo cáo ngành, sản phẩm giao dịch cập nhật hàng ngày.</p>
+                            <button class="read-more-two">Xem thêm 
+
+                                <svg fill="#000000" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M419.3 264.8l-61.8 61.8L542.9 512 357.5 697.4l61.8 61.8L666.5 512z"></path></g></svg>
+                            </button>
+                        </div>
+        
+                        <div class="info-card">
+                            <div class="icon">📈</div>
+                            <h3>TIN TỨC THỊ TRƯỜNG HÀNG HÓA</h3>
+                            <p>Cập nhật nhanh chóng và đưa ra các phân tích chính xác những biến động trên thị trường hàng hóa</p>
+                            <button class="read-more-two">Xem thêm</button>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+       
+        </main>
+    </div>
+</body>
+</html>

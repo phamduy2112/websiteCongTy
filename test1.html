@@ -1,0 +1,471 @@
+<style>
+  
+    .slideshow-container {
+        position: relative;
+        width: 100%; /* Set chiều rộng slideshow container */
+        height: 350px; /* Set chiều cao slideshow container */
+        background: #fdb924;
+        border-radius: 1.5rem;
+        margin: auto;
+        overflow: hidden;
+      }
+    
+      .slides {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+      
+      .slide {
+        display: none;
+        width: 100%;
+      }
+      
+      .slide.active {
+        display: block;
+      }
+      
+      .slide-img img {
+        width: 100%;
+        height: auto;
+      }
+      
+      .caption {
+        padding: 6rem 1.5rem;
+      }
+      .caption h3 {
+        font-size: 3.5rem;
+        color: black;
+        margin-bottom: 0.5rem;
+      }
+      .caption .caption-text {
+        font-size: 1.2rem;
+        color: black;
+        width: 80%;
+      }
+    
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        user-select: none;
+      }
+    
+      .prev {
+        left: 10px;
+      }
+    
+      .next {
+        right: 10px;
+      }
+      .gcl-index-box-two {
+        
+      }
+      .gcl-index-box-two-right,
+      .gcl-index-box-two-left {
+        width: 100%;
+      }
+     .gcl-index-box-two-left{
+        margin-bottom: 2rem;
+     }
+      .gcl-index-box-two-left h2 {
+        color: #333;
+        font-size: 1.9rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .gcl-index-box-two-left h2 span {
+        color: #fdb924;
+        display: inline;
+    
+      }
+      .gcl-index-box-two-left p {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+     .button-box-one-left {
+        padding: 1rem 1.5rem;
+        width: 9rem;
+        background: #2f4152;
+        text-decoration: none;
+      
+        border-radius: 4px;
+       text-align: center;
+       margin:0 auto;
+    
+  
+      }
+   .button-box-one-left a{
+    text-decoration: none;
+    color: white;
+   }
+      .gcl-index-box-two-right__flex .slide .slide-img {
+        position: absolute;
+        top: 9rem;
+        right: 0;
+
+      }
+  
+   
+     .gcl-index-box-two-right__bottom .gcl-index-box-two-right__bottom__grid__item img {
+        width: 100%;
+        height: 100%;
+        object-fit: initial;
+      }
+
+      .marquee {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        background: #fff;
+        height: 100px; /* Adjust height as needed */
+        display: flex;
+        align-items: center;
+      }
+      
+      .marquee__inner {
+        display: flex;
+        width: calc(200%); /* Đảm bảo chiều dài gấp đôi nội dung */
+        animation: scroll 10s linear infinite;
+      }
+
+      .marquee__inner .gcl-index-box-two-right__bottom__grid__item {
+        min-width: 200px; /* Adjust item size */
+        margin: 0 10px;
+      }
+      
+     .marquee__inner .gcl-index-box-two-right__bottom__grid__item img {
+        width: 100%;
+        height: auto;
+      }
+      
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Cuộn nửa chiều rộng nội dung */
+  }
+}
+      @media (min-width: 320px) {
+   
+        #gcl-slideshow__two{
+            display: none;
+        }
+        .gcl-index-box-two-right__bottom .gcl-index-box-two-right__bottom__grid {
+          display: none;
+
+        }
+      }
+      @media (min-width: 640px) {
+        .gcl-index-box-two{
+            display: flex;
+            flex-wrap: wrap;
+        gap: 1%;
+ 
+        }
+        .gcl-index-box-two-left h2{
+            text-align:start ;
+            font-size: 2.8rem;
+        }
+        .gcl-index-box-two-left h2 span{
+            display: block;
+            text-align: start;
+        }
+        .gcl-index-box-two-left p{
+            text-align: start;
+        }
+        .gcl-index-box-two-right,
+        .gcl-index-box-two-left {
+          width: 48%;
+        }
+        
+        .gcl-index-box-two-right__flex {
+            display: flex;
+            gap: 1%;
+          }
+          .button-box-one-left {
+            margin: 0;
+          }
+       
+          
+      }
+      @media(min-width: 821px) {
+        #gcl-slideshow__two{
+            display: inline-block;
+        }
+        .gcl-index-box-two-right {
+            padding: 15rem 0  4rem;
+          }
+          .gcl-index-box-two-left h2{
+            font-size: 3.5rem;
+        }
+        .gcl-index-box-two-left p{
+            margin-bottom: 2rem;
+        }
+      }
+     @media(min-width:1024px){
+      .gcl-index-box-two-right__bottom .gcl-index-box-two-right__bottom__grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin: 0 auto; /* Căn giữa theo chiều ngang */
+        width: fit-content; /* Hoặc một giá trị cụ thể như 500px */
+    }
+      .marquee{
+        display: none;
+      }
+     }
+</style>
+<div class="container">
+    <div class="gcl-index-box-two">
+        <!-- trái -->
+        <div class="gcl-index-box-two-left">
+          <div>
+            <h2>
+              <span>Dẫn Dắt </span> 
+              Với Vị Thế Tiên Phong
+            </h2>
+            <p>
+              Tự hào khẳng định vị thế hàng đầu và niềm tin trong lòng khách hàng
+            </p>
+            <div class="button-box-one-left">
+              <a href="" >Khám phá ngay &#10095;</a>
+
+            </div>
+          </div>
+        </div>
+        <div class="gcl-index-box-two-right">
+          <div class="gcl-index-box-two-right__flex">
+            <div class="slideshow-container" id="slideshow-1">
+              <div class="slides">
+                <div class="slide active">
+                  <div class="caption">
+                    <h3>Số 1</h3>
+                    <div class="caption-text">Số 1 thị phần môi giới Hàng Hóa</div>
+                  </div>
+                  <div class="slide-img">
+                    <img
+                      src="https://giacatloi.vn/wp-content/uploads/2025/01/Component-4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="caption">
+                    <h3>Số 3</h3>
+                    <div class="caption-text">Số 1 thị phần môi giới Hàng Hóa</div>
+                  </div>
+                  <div class="slide-img">
+                    <img
+                      src="https://giacatloi.vn/wp-content/uploads/2025/01/Component-4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="caption">
+                    <h3>Số 2</h3>
+                    <div class="caption-text">Số 1 thị phần môi giới Hàng Hóa</div>
+                  </div>
+                  <div class="slide-img">
+                    <img
+                      src="https://giacatloi.vn/wp-content/uploads/2025/01/Component-4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="slideshow-container" id="gcl-slideshow__two slideshow-1">
+              <div class="slides">
+                <div class="slide active">
+                  <div class="caption">
+                    <h3>Số 1</h3>
+                    <div class="caption-text">Số 1 thị phần môi giới Hàng Hóa</div>
+                  </div>
+                  <div class="slide-img">
+                    <img
+                      src="https://giacatloi.vn/wp-content/uploads/2025/01/Component-4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="caption">
+                    <h3>Số 3</h3>
+                    <div class="caption-text">Số 1 thị phần môi giới Hàng Hóa</div>
+                  </div>
+                  <div class="slide-img">
+                    <img
+                      src="https://giacatloi.vn/wp-content/uploads/2025/01/Component-4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="caption">
+                    <h3>Số 2</h3>
+                    <div class="caption-text">Số 1 thị phần môi giới Hàng Hóa</div>
+                  </div>
+                  <div class="slide-img">
+                    <img
+                      src="https://giacatloi.vn/wp-content/uploads/2025/01/Component-4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              </div>
+    
+  
+            </div>
+          </div>
+        </div>
+        <div class="gcl-index-box-two-right__bottom">
+          <div class="gcl-index-box-two-right__bottom__grid">
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/Variant3-1.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-01.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-01.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-01.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-07-5.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-08.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-03.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-09.png"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-box-two-right__bottom__grid__item">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="marquee">
+            <div class="marquee__inner">
+              <div class="gcl-index-box-two-right__bottom__grid__item">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+                  alt="Logo 1"
+                />
+              </div>
+              <div class="gcl-index-box-two-right__bottom__grid__item">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+                  alt="Logo 2"
+                />
+              </div>
+              <div class="gcl-index-box-two-right__bottom__grid__item">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+                  alt="Logo 3"
+                />
+              </div>
+              <!-- Duplicate for seamless loop -->
+              <div class="gcl-index-box-two-right__bottom__grid__item">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+                  alt="Logo 4"
+                />
+              </div>
+              <div class="gcl-index-box-two-right__bottom__grid__item">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+                  alt="Logo 5"
+                />
+              </div>
+            </div>
+          </div>
+      
+        
+</div>
+        </div>
+
+      </div>
+</div>
+
+<script>
+  function createSlideshow(slideshowId, interval) {
+    const container = document.getElementById(slideshowId);
+    const slides = container.querySelectorAll(".slide");
+    let currentIndex = 0;
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+        }
+      });
+    }
+  
+    function autoSlide() {
+      currentIndex = (currentIndex + 1) % slides.length; // Lặp lại từ đầu sau slide cuối
+      showSlide(currentIndex);
+    }
+  
+    // Bắt đầu slideshow
+    setInterval(autoSlide, interval);
+  
+    // Hiển thị slide đầu tiên
+    showSlide(currentIndex);
+  }
+  
+  // Tạo slideshow cho từng container
+  createSlideshow("slideshow-1", 2000); // Slideshow 1 chạy mỗi 2 giây
+  createSlideshow("slideshow-2", 3000); // Slideshow 2 chạy mỗi 3 giây
+
+</script>

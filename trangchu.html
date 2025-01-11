@@ -1,0 +1,1344 @@
+<style>
+  /* CSS chính */
+  .gcl-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .gcl-index-box-one {
+    display: flex;
+    gap: 1%;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #333;
+  }
+
+  .gcl-index-box-one__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24%; /* Mặc định cho màn hình lớn */
+    gap: 0.5rem;
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động cho zoom */
+  }
+
+  .gcl-index-box-one__item:hover {
+    transform: scale(1.1); /* Phóng to 10% khi hover */
+  }
+
+  .gcl-index-box-one__icon {
+    width: 50px;
+    height: 50px;
+    color: #fdb924;
+  }
+
+  .gcl-index-box-one__item h4 {
+    width: 60%;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #333;
+  }
+  .slideshow-container {
+    position: relative;
+    width: 50%; /* Set chiều rộng slideshow container */
+    height: 350px; /* Set chiều cao slideshow container */
+    background: #fdb924;
+    border-radius: 1.5rem;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .slides {
+    display: flex;
+
+    transition: transform 1s ease; /* Hiệu ứng trượt theo chiều rộng */
+  }
+
+  .slide {
+    width: 100%; /* Mỗi slide chiếm toàn bộ chiều rộng */
+    height: 100%; /* Chiều cao của slide */
+    flex-shrink: 0; /* Không co lại */
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giữ tỷ lệ hình ảnh và không bị méo */
+  }
+
+  .caption {
+    padding: 6rem 1.5rem;
+  }
+  .caption h3 {
+    font-size: 3.5rem;
+    color: black;
+    margin-bottom: 0.5rem;
+  }
+  .caption .caption-text {
+    font-size: 1.2rem;
+    color: black;
+    width: 80%;
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+  .gcl-index-box-two {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+  }
+  .gcl-index-box-two-right,
+  .gcl-index-box-two-left {
+    width: 48%;
+  }
+  .gcl-index-box-two-right {
+    padding: 15rem 0;
+  }
+  .gcl-index-box-two-left h2 {
+    font-size: 3.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  .gcl-index-box-two-left h2 span {
+    color: #fdb924;
+  }
+  .gcl-index-box-two-left p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  .gcl .button-box-one-left {
+    padding: 1rem 2rem;
+    background: #2f4152;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+  }
+  .gcl-index-box-two-right__flex {
+    display: flex;
+    gap: 1%;
+  }
+  .gcl-index-box-two-right__flex .slide .slide-img {
+    position: absolute;
+    top: 9rem;
+    right: 0;
+  }
+  .gcl-index-box-two-right__bottom__grid__item {
+    width: 19.5%;
+  }
+  .gcl-index-box-two-right__bottom__grid {
+    display: flex;
+
+    flex-wrap: wrap;
+  }
+  .gcl-index-box-two-right__bottom__grid__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: initial; /* Không thay đổi cách hình ảnh được hiển thị */
+  }
+
+  /* */
+  .gcl-index-box-three__content__box {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .dropdown-container {
+    display: flex;
+    gap: 20px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-button .arrow {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    display: none;
+    z-index: 1000;
+  }
+
+  .dropdown-menu li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dropdown-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-menu li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    display: block;
+  }
+
+  .dropdown-menu li a:hover {
+    background-color: #ddd;
+  }
+  .gcl-index-box-three__title {
+    font-size: 3.5rem;
+    width: 70%;
+    margin-bottom: 1rem;
+  }
+  .gcl-index-box-three__content__text {
+    font-size: 1.3rem;
+    width: 50%;
+  }
+  .gcl-index-box-three__title span {
+    color: #fdb924;
+  }
+  .gcl-index-box-three {
+    width: 100%;
+    height: 1000px; /* Chiều cao cố định */
+    background-image: url("https://giacatloi.vn/wp-content/uploads/2025/01/Section-1.png");
+    background-size: cover; /* Đảm bảo bao phủ toàn bộ khung */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* Giữ cố định khi cuộn trang */
+  }
+  .gcl-index-box-three__content {
+    padding: 6rem 0;
+  }
+  .gcl-dropdown {
+    position: relative;
+    width: 65%;
+
+    text-align: left;
+  }
+
+  .gcl-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: #fdb924;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 2rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .gcl-dropdown-toggle:hover {
+    background-color: #fdb924;
+    color: black;
+  }
+  .gcl-dropdown-menu-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .gcl-dropdown-icon {
+    width: 16px;
+    height: 16px;
+    transform: rotate(0);
+    transition: transform 0.3s ease;
+  }
+  .gcl-dropdown-menu .gcl-dropdown-menu-flex {
+    display: flex;
+    margin-left: 1rem;
+    gap: 1rem;
+  }
+  .gcl-dropdown-menu-flex span {
+    font-size: 1.2rem;
+  }
+  .gcl-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 96%;
+
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: none;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1%;
+    opacity: 0;
+    padding: 10px 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+
+  .gcl-dropdown-menu li {
+    border-bottom: 1px solid #ff0000;
+    width: 47%;
+    padding: 1rem 0;
+  }
+
+  .gcl-dropdown-menu a {
+    display: block;
+
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Open state styles */
+  .gcl-dropdown.open .gcl-dropdown-menu {
+    display: flex;
+    max-height: 200px; /* Adjust based on content */
+    opacity: 1;
+  }
+
+  .gcl-dropdown.open .gcl-dropdown-icon {
+    transform: rotate(90deg);
+  }
+
+  /* box 4 */
+  .gcl-index-information__top {
+    text-align: center;
+  }
+  .gcl-index-information__top .gcl-index-information-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #fdb924;
+    margin-bottom: 0.5rem;
+  }
+  .gcl-index-information__top .gcl-index-information-description {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .gcl-index-information__bottom {
+    display: flex;
+    gap: 0.5%;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    margin: auto;
+  }
+  .gcl-index-information__item {
+    width: 19%;
+    position: relative;
+    padding: 1rem 2rem;
+
+    background-color: white;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .gcl-index-information-item-item__top .gcl-index-information-item__icon {
+    width: 5rem;
+    height: 5rem;
+  }
+  .gcl-index-information-item-item__top .gcl-index-information-item__icon img {
+    width: 100%;
+    height: 100%;
+  }
+  .gcl-index-information-item-item__top {
+    display: flex;
+    gap: 1rem;
+  }
+  .gcl-index-information-item__solid {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    width: 5px;
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    height: 4rem;
+    background-color: #fdb924;
+    border: 1px solid #fdb924; /* Màu sắc và kiểu đường viền đứt đoạn */
+    pointer-events: none; /* Đảm bảo không có tương tác với phần tử này */
+  }
+
+  .gcl-index-information-item-bottom__title h4 {
+    font-size: 1.7rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.2rem;
+  }
+  .gcl-index-information-item-bottom__item {
+    display: flex;
+    width: 48%;
+    gap: 1%;
+  }
+  .gcl-index-information-item-bottom-item__img {
+    width: 45px;
+    height: 50px;
+  }
+  .gcl-index-information-item-bottom-item__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Giữ tỷ lệ hình ảnh và không bị méo */
+  }
+  .gcl-index-information-item-bottom__item h5 {
+    font-size: 1.1rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+    text-decoration: underline;
+  }
+  .gcl-index-information-item_bottom {
+    display: flex;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 1%;
+  }
+  .gcl-dropdown .open .gcl-dropdown-menu li {
+    z-index: 100000000;
+  }
+  .gcl-index-information-item__button {
+    background: #2f4152;
+    text-decoration: none;
+    padding: 0.8rem 0;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  .gcl-index-information-item__button .gcl-button {
+    color: white;
+    text-decoration: none;
+  }
+  /* Responsive cho màn hình nhỏ hơn 1200px */
+  @media (max-width: 75rem) {
+    .gcl-index-box-one__item {
+      width: 30%; /* Chỉnh lại cho màn hình nhỏ hơn */
+    }
+    .gcl-index-box-one__item h4 {
+      width: 45%;
+    }
+    .gcl-index-information__item {
+      width: 25%;
+    }
+  }
+
+  /* Responsive cho màn hình nhỏ hơn 1024px */
+  @media (max-width: 64rem) {
+    .gcl-index-box-one__item {
+      width: 48%; /* Chỉnh lại để có 2 cột */
+    }
+    .gcl-index-information__item {
+      width: 24%;
+      margin: auto;
+    }
+  }
+  @media (max-width: 900px) {
+    .gcl-index-box-one__item {
+      width: 48%; /* Chỉnh lại để có 2 cột */
+    }
+    .gcl-index-information__item {
+      width: 37%;
+      margin: auto;
+      margin-top: 1rem;
+    }
+    .gcl-index-box-three__title {
+      font-size: 2.5rem;
+      width: 90%; /* Rộng hơn để dễ đọc */
+    }
+    .gcl-index-box-three__content__text {
+      font-size: 1.2rem;
+      width: 80%; /* Chiều rộng text lớn hơn */
+    }
+    .gcl-dropdown {
+      width: 90%; /* Thu nhỏ dropdown */
+    }
+  }
+
+  /* Responsive cho màn hình nhỏ hơn 768px */
+  @media (max-width: 48rem) {
+    .gcl {
+      width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+      padding: 0 1rem; /* Thêm padding để đẹp hơn */
+    }
+    .gcl-index-box-one__item {
+      width: 49%; /* Chia đôi cột cho màn hình nhỏ */
+    }
+    .gcl-index-information__item {
+      width: 40%;
+    }
+
+    /* 2 */
+    .gcl-index-box-two .gcl-index-box-two-right,
+    .gcl-index-box-two-left {
+      display: block;
+      width: 100%;
+    }
+    .gcl-index-box-two .gcl-index-box-two-right {
+      padding: 3rem;
+    }
+    .gcl-index-box-three__content__box {
+      display: block;
+    }
+    .gcl-index-box-three__content {
+      margin-bottom: 1rem;
+    }
+    .image-container {
+      width: 100%; /* Giới hạn chiều rộng phần tử */
+      padding: 0; /* Loại bỏ padding nếu cần */
+      margin: 0; /* Loại bỏ margin gây tràn */
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  /* Responsive cho màn hình nhỏ hơn 480px */
+  @media (max-width: 30rem) {
+    .gcl-index-box-one__item {
+      width: 100%; /* Mỗi item chiếm toàn bộ chiều rộng */
+      flex-direction: column; /* Icon và tiêu đề xếp dọc */
+      text-align: center;
+    }
+    .gcl-index-box-one__icon {
+      margin-bottom: 0.5rem;
+    }
+    .gcl-index-box-one__item h4 {
+      width: 35%;
+      font-size: 1rem; /* Nhỏ hơn một chút cho màn hình nhỏ */
+    }
+    .gcl-index-information__item {
+      width: 100%;
+    }
+    .gcl-index-box-three {
+      width: 100%;
+      height: 40rem;
+      height: auto; /* Cho phép nội dung mở rộng tự nhiên */
+      padding: 5rem 0; /* Thêm khoảng cách nội dung */
+    }
+    .gcl-index-box-three__content {
+      padding: 1rem 0;
+    }
+    .gcl-index-box-three__title {
+      font-size: 1.8rem; /* Giảm kích thước tiêu đề */
+      width: 100%;
+    }
+
+    .gcl-index-box-three__content__text {
+      font-size: 1.2rem; /* Thu nhỏ văn bản */
+      width: 100%; /* Chiếm toàn bộ khung */
+      margin-bottom: 1rem;
+    }
+
+    .gcl-dropdown {
+      width: 100%; /* Đảm bảo dropdown vừa khung */
+    }
+
+    .gcl-dropdown-menu {
+      flex-wrap: wrap; /* Điều chỉnh các mục thành hàng */
+      gap: 0.5rem; /* Tăng khoảng cách giữa các mục */
+    }
+
+    .gcl-dropdown-menu li {
+      width: 100%; /* Mỗi mục chiếm toàn bộ chiều rộng */
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="gcl-container">
+    <div class="gcl-index-box-one">
+      <div class="gcl-index-box-one__item">
+        <svg
+          class="gcl-index-box-one__icon"
+          viewBox="0 0 24.00 24.00"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z"
+              stroke="#fdb924"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+        <h4>Bảo hộ bởi bộ Công Thương</h4>
+      </div>
+      <div class="gcl-index-box-one__item">
+        <svg
+          class="gcl-index-box-one__icon"
+          viewBox="0 0 24.00 24.00"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z"
+              stroke="#fdb924"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+        <h4>Bảo hộ bởi bộ Công Thương</h4>
+      </div>
+      <div class="gcl-index-box-one__item">
+        <svg
+          class="gcl-index-box-one__icon"
+          viewBox="0 0 24.00 24.00"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z"
+              stroke="#fdb924"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+        <h4>Bảo hộ bởi bộ Công Thương</h4>
+      </div>
+      <div class="gcl-index-box-one__item">
+        <svg
+          class="gcl-index-box-one__icon"
+          viewBox="0 0 24.00 24.00"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z"
+              stroke="#fdb924"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+        <h4>Bảo hộ bởi bộ Công Thương</h4>
+      </div>
+    </div>
+    <!-- box 2 -->
+    <div class="gcl-index-box-two">
+      <!-- trái -->
+      <div class="gcl-index-box-two-left">
+        <div>
+          <h2>
+            <span>Dẫn Dắt </span> <br />
+            Với Vị Thế Tiên Phong
+          </h2>
+          <p>
+            Tự hào khẳng định vị thế hàng đầu và niềm tin trong lòng khách hàng
+          </p>
+          <a href="" class="button-box-one-left">Khám phá ngay &#10095;</a>
+        </div>
+      </div>
+      <div class="gcl-index-box-two-right">
+        <div class="gcl-index-box-two-right__flex">
+          <div class="slideshow-container">
+            <div class="slides">
+              <div class="slide">
+                <div class="caption">
+                  <h3>Số 1</h3>
+                  <div class="caption-text">
+                    Số 1 thị phần môi giới Hàng Hóa
+                  </div>
+                </div>
+                <div class="slide-img">
+                  <img
+                    src="https://giacatloi.vn/wp-content/uploads/2025/01/Component-4.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="slide">
+                <div class="caption">Caption for slide 2</div>
+              </div>
+              <div class="slide">
+                <div class="caption">Caption for slide 3</div>
+              </div>
+            </div>
+          </div>
+          <div class="slideshow-container">
+            <div class="slides">
+              <div class="slide">
+                <div class="caption">Caption for slide 1</div>
+              </div>
+              <div class="slide">
+                <div class="caption">Caption for slide 2</div>
+              </div>
+              <div class="slide">
+                <div class="caption">Caption for slide 3</div>
+              </div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+        </div>
+      </div>
+      <div class="gcl-index-box-two-right__bottom">
+        <div class="gcl-index-box-two-right__bottom__grid">
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/Variant3-1.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-01.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-01.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-01.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-07-5.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-08.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-03.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-09.png"
+              alt=""
+            />
+          </div>
+          <div class="gcl-index-box-two-right__bottom__grid__item">
+            <img
+              src="https://giacatloi.vn/wp-content/uploads/2025/01/LOGO-SAN-GD-05.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- box 3 -->
+
+  <div class="gcl-index-box-three">
+    <div class="gcl-container">
+      <div class="gcl-index-box-three__content">
+        <h3 class="gcl-index-box-three__title">
+          Hơn <span> 40000 </span> nhà đầu tư VN đang giao dịch trên thị trường
+        </h3>
+        <div class="gcl-index-box-three__content__box">
+          <div class="gcl-index-box-three__content__text">
+            Giao dịch phái sinh hàng hoá đã và đang là kênh đầu tư hiệu quả mang
+            đến cơ hội thành công lớn cho nhà đầu tư
+          </div>
+          <a href="" class="button-box-one-left">Khám phá ngay &#10095;</a>
+        </div>
+      </div>
+      <div class="gcl-dropdown open">
+        <div class="gcl-dropdown-toggle" onclick="toggleDropdown(this)">
+          <h3>Công cụ giao dịch</h3>
+          <svg
+            class="gcl-dropdown-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.82054 20.7313C8.21107 21.1218 8.84423 21.1218 9.23476 20.7313L15.8792 14.0868C17.0505 12.9155 17.0508 11.0167 15.88 9.84497L9.3097 3.26958C8.91918 2.87905 8.28601 2.87905 7.89549 3.26958C7.50497 3.6601 7.50497 4.29327 7.89549 4.68379L14.4675 11.2558C14.8581 11.6464 14.8581 12.2795 14.4675 12.67L7.82054 19.317C7.43002 19.7076 7.43002 20.3407 7.82054 20.7313Z"
+              fill="#0F0F0F"
+            ></path>
+          </svg>
+        </div>
+        <ul class="gcl-dropdown-menu">
+          <li>
+            <a href="#" class="gcl-dropdown-menu-flex">
+              <svg
+                viewBox="0 0 24 24"
+                class="gcl-dropdown-menu-icon"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                  stroke="#2F4152"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+              <span>Hợp đồng Tương lai 1</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="gcl-dropdown-menu-flex">
+              <svg
+                viewBox="0 0 24 24"
+                class="gcl-dropdown-menu-icon"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                  stroke="#2F4152"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+              <span>Hợp đồng Tương lai 2</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="gcl-dropdown-menu-flex">
+              <svg
+                viewBox="0 0 24 24"
+                class="gcl-dropdown-menu-icon"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                  stroke="#2F4152"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+              <span>Hợp đồng Tương lai 2</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="gcl-dropdown-menu-flex">
+              <svg
+                viewBox="0 0 24 24"
+                class="gcl-dropdown-menu-icon"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 11L21 15M21 15L17 19M21 15H8C5.23858 15 3 12.7614 3 10C3 7.23858 5.23858 5 8 5H13"
+                  stroke="#2F4152"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+              <span>Hợp đồng Tương lai 2</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Box 4 -->
+  <div class="gcl-container">
+    <div class="gcl-index-information">
+      <div class="gcl-index-information__top">
+        <h2 class="gcl-index-information-title">
+          ĐẦU TƯ THÔNG MINH VỚI DANH MỤC ĐA DẠNG
+        </h2>
+        <div class="gcl-index-information-description">
+          Giao dịch liên thông với thị trường quốc tế đa dạng sản phẩm
+        </div>
+      </div>
+      <div class="gcl-index-information__bottom">
+        <div class="gcl-index-information__item">
+          <div class="gcl-index-information-item__solid"></div>
+          <div class="gcl-index-information-item-item__top">
+            <div class="gcl-index-information-item__icon">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-information-item-bottom__title">
+              <h4>Nông sản</h4>
+              <div>Sạch sẽ an toàn</div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item_bottom">
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item__button">
+            <a href="#" class="gcl-button">Xem thêm</a>
+          </div>
+        </div>
+        <div class="gcl-index-information__item">
+          <div class="gcl-index-information-item__solid"></div>
+          <div class="gcl-index-information-item-item__top">
+            <div class="gcl-index-information-item__icon">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-information-item-bottom__title">
+              <h4>Nông sản</h4>
+              <div>Sạch sẽ an toàn</div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item_bottom">
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item__button">
+            <a href="#" class="gcl-button">Xem thêm</a>
+          </div>
+        </div>
+        <div class="gcl-index-information__item">
+          <div class="gcl-index-information-item__solid"></div>
+          <div class="gcl-index-information-item-item__top">
+            <div class="gcl-index-information-item__icon">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-information-item-bottom__title">
+              <h4>Nông sản</h4>
+              <div>Sạch sẽ an toàn</div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item_bottom">
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item__button">
+            <a href="#" class="gcl-button">Xem thêm</a>
+          </div>
+        </div>
+        <div class="gcl-index-information__item">
+          <div class="gcl-index-information-item__solid"></div>
+          <div class="gcl-index-information-item-item__top">
+            <div class="gcl-index-information-item__icon">
+              <img
+                src="https://giacatloi.vn/wp-content/uploads/2025/01/NONG-SAN-01.svg"
+                alt=""
+              />
+            </div>
+            <div class="gcl-index-information-item-bottom__title">
+              <h4>Nông sản</h4>
+              <div>Sạch sẽ an toàn</div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item_bottom">
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+            <div class="gcl-index-information-item-bottom__item">
+              <div class="gcl-index-information-item-bottom-item__img">
+                <img
+                  src="https://giacatloi.vn/wp-content/uploads/2025/01/LUA-MY-01.svg"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h5>Lúa mì</h5>
+              </div>
+            </div>
+          </div>
+          <div class="gcl-index-information-item__button">
+            <a href="#" class="gcl-button">Xem thêm</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // script.js
+  let startX;
+  let endX;
+  const slides = document.querySelector(".slides");
+  const slideCount = document.querySelectorAll(".slide").length;
+
+  slides.addEventListener("mousedown", (e) => {
+    startX = e.pageX;
+    slides.style.transition = "none"; // Tắt hiệu ứng khi kéo
+  });
+
+  slides.addEventListener("mouseup", (e) => {
+    endX = e.pageX;
+    if (startX - endX > 50) {
+      nextSlide();
+    } else if (endX - startX > 50) {
+      prevSlide();
+    }
+  });
+
+  slides.addEventListener("mouseleave", () => {
+    slides.style.transition = "transform 0.5s ease-in-out";
+  });
+
+  let currentIndex = 0;
+
+  function nextSlide() {
+    if (currentIndex < slideCount - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Quay lại slide đầu
+    }
+    updateSlidePosition();
+  }
+
+  function prevSlide() {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = slideCount - 1; // Quay lại slide cuối
+    }
+    updateSlidePosition();
+  }
+
+  function updateSlidePosition() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+  // Lấy tất cả các nút và menu
+  function toggleDropdown(element) {
+    // Lấy tất cả các dropdown trong trang
+    const allDropdowns = document.querySelectorAll(".gcl-dropdown");
+
+    // Đóng tất cả các dropdown khác
+    allDropdowns.forEach((dropdown) => {
+      if (dropdown !== element.closest(".gcl-dropdown")) {
+        dropdown.classList.remove("open");
+      }
+    });
+
+    // Toggle 'open' cho dropdown hiện tại
+    const dropdown = element.closest(".gcl-dropdown");
+    dropdown.classList.toggle("open");
+  }
+</script>

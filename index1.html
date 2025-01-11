@@ -1,0 +1,187 @@
+<style>
+  .gcl-tabs {
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+  }
+  
+  .gcl-tabs__buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+  }
+  
+  .gcl-tabs__button {
+    flex: 1;
+    padding: 9px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    border: 1px solid #fdb924;
+    color: #002835;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    white-space: nowrap;
+    text-transform: uppercase;
+    
+  }
+  
+  .gcl-tabs__button--active {
+    background-color: #fdb924;
+    font-weight: 600;
+  }
+  
+  .gcl-tabs__panel {
+    display: none;
+    padding: 20px;
+    background: #fff;
+    margin-top: -1px;
+  }
+  
+  .gcl-tabs__panel--active {
+    display: block;
+  }
+  
+  .gcl-tabs__arrow {
+    position: absolute;
+    top: 38%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px 10px;
+    color: white;
+    opacity: 0.5;
+  }
+  
+  .gcl-tabs__arrow--left {
+    left: 0;
+  }
+  
+  .gcl-tabs__arrow--right {
+    right: -20px;
+  }
+  .gcl-tabs__container{
+    position: relative;
+  }
+  @media (min-width: 640px) {
+    .gcl-tabs__arrow {
+      display: none;
+    }
+    .gcl-tabs__buttons {
+      overflow: visible;
+    }
+  }
+  
+</style>
+
+<div class="gcl-tabs">
+  <div class="gcl-tabs__container">
+    <button class="gcl-tabs__arrow gcl-tabs__arrow--left"><</button>
+    <div class="gcl-tabs__buttons">
+      <button class="gcl-tabs__button gcl-tabs__button--active" data-tab="tab1">Tổng quan</button>
+      <button class="gcl-tabs__button" data-tab="tab2">Tầm nhìn sứ mệnh</button>
+      <button class="gcl-tabs__button" data-tab="tab3">Ban lãnh đạo</button>
+      <button class="gcl-tabs__button" data-tab="tab4">Lịch sử phát triển</button>
+    </div>
+    <button class="gcl-tabs__arrow gcl-tabs__arrow--right">></button>
+  </div>
+  
+  <div class="gcl-tabs__content">
+    <div class="gcl-tabs__panel gcl-tabs__panel--active" id="tab1">
+      [elementor-template id="70917"]
+    </div>
+    <div class="gcl-tabs__panel" id="tab2">[elementor-template id="70945"]</div>
+    <div class="gcl-tabs__panel" id="tab3">[elementor-template id="70989"]</div>
+    <div class="gcl-tabs__panel" id="tab4">
+      [elementor-template id="71361"]
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabButtons = document.querySelectorAll(".gcl-tabs__button");
+    const tabPanels = document.querySelectorAll(".gcl-tabs__panel");
+    const tabContainer = document.querySelector(".gcl-tabs__buttons");
+    const leftArrow = document.querySelector(".gcl-tabs__arrow--left");
+    const rightArrow = document.querySelector(".gcl-tabs__arrow--right");
+  
+    // Xử lý chuyển tab
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetTab = button.getAttribute("data-tab");
+  
+        // Xóa trạng thái active
+        tabButtons.forEach((btn) => btn.classList.remove("gcl-tabs__button--active"));
+        tabPanels.forEach((panel) => panel.classList.remove("gcl-tabs__panel--active"));
+  
+        // Kích hoạt tab mới
+        button.classList.add("gcl-tabs__button--active");
+        document.getElementById(targetTab).classList.add("gcl-tabs__panel--active");
+      });
+    });
+  
+    // Logic cuộn mượt
+    const scrollSmoothly = (offset) => {
+      tabContainer.scrollBy({ left: offset, behavior: "smooth" });
+      updateArrowState();
+    };
+  
+    // Kiểm tra trạng thái của các mũi tên
+    const updateArrowState = () => {
+      const maxScrollLeft = tabContainer.scrollWidth - tabContainer.clientWidth;
+  
+      if (tabContainer.scrollLeft <= 0) {
+        leftArrow.style.display = "none";
+      } else {
+        leftArrow.style.display = "block";
+      }
+  
+      if (tabContainer.scrollLeft >= maxScrollLeft) {
+        rightArrow.style.display = "none";
+      } else {
+        rightArrow.style.display = "block";
+      }
+    };
+  
+    // Gắn sự kiện vào các mũi tên
+    leftArrow.addEventListener("click", () => scrollSmoothly(-300));
+    rightArrow.addEventListener("click", () => scrollSmoothly(300));
+  
+    // Xử lý kéo bằng cảm ứng
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+  
+    tabContainer.addEventListener("touchstart", (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX; // Lấy vị trí bắt đầu của ngón tay
+      scrollLeft = tabContainer.scrollLeft; // Lưu trạng thái cuộn hiện tại
+    });
+  
+    tabContainer.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      const touch = e.touches[0];
+      const moveX = touch.pageX - startX; // Tính khoảng cách kéo
+      tabContainer.scrollLeft = scrollLeft - moveX; // Cuộn theo hướng kéo
+    });
+  
+    tabContainer.addEventListener("touchend", () => {
+      isDragging = false; // Kết thúc kéo
+      updateArrowState(); // Cập nhật trạng thái mũi tên
+    });
+  
+    // Cập nhật trạng thái mũi tên khi khởi tạo
+    updateArrowState();
+  
+    // Lắng nghe sự kiện khi cuộn
+    tabContainer.addEventListener("scroll", updateArrowState);
+  });
+  
+</script>
