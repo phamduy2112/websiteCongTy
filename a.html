@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đội Ngũ Diễn Giả</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .header {
+      text-align: center;
+      padding: 20px;
+      background: #e8f4ff;
+    }
+    .header h1 {
+      margin: 0;
+      color: #2563eb;
+    }
+    .header p {
+      margin: 5px 0;
+      color: #666;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+     
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .speaker-info {
+      display: flex;
+     
+      gap: 20px;
+  
+    }
+    .gcl-speakers{
+        position: relative;
+    }
+    .speaker-info img {
+        
+ 
+     
+    }
+    .speaker-info h2 {
+        margin-top: 2rem;
+     
+      font-size: 24px;
+      color: #2563eb;
+    }
+    .speaker-info p {
+      margin: 5px 0;
+      color: #555;
+    }
+    .speakers {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      
+      transform: translate(-50%,50%);
+    }
+    .speaker {
+      cursor: pointer;
+      text-align: center;
+      
+    }
+    .speaker img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(to bottom, grey, #f0f0f0, grey);
+
+    }
+    .speaker-info__text{
+        width: 50%;
+    }
+    .speaker p {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+    .highlight {
+      border: 2px solid #fdb924;
+    }
+    .gcl-speakers__box{
+        background: linear-gradient(to bottom, #FEFDFA 75%, #FDB924);
+        padding: 0 0 5rem;
+    }
+  </style>
+</head>
+<body>
+    <div class="gcl-speakers">
+
+  <div class="header">
+    <h1>ĐỘI NGŨ DIỄN GIẢ</h1>
+    <p>Chặng đường học đầu tư cho người mới bắt đầu</p>
+  </div>
+
+  <div class="container">
+    <div class="gcl-speakers__box">
+          <!-- Thông tin chính -->
+    <div class="speaker-info">
+        <img id="main-speaker-img" src="./image-removebg-preview 1.png" alt="Speaker">
+        <div>
+          <h2 id="main-speaker-name">Lương Tuấn Vũ</h2>
+          <p id="main-speaker-title">Tổng Giám Đốc - Chuyên gia trong lĩnh vực đầu tư hàng hóa</p>
+          <p id="main-speaker-content">Nội dung chi tiết về diễn giả sẽ hiển thị tại đây.</p>
+        </div>
+      </div>
+  
+      <!-- Danh sách các diễn giả -->
+      <div class="speakers">
+        <div class="speaker" data-name="Lương Tuấn Vũ" data-title="Tổng Giám Đốc - Chuyên gia trong lĩnh vực đầu tư hàng hóa" data-content="Nội dung chi tiết của diễn giả Lương Tuấn Vũ" data-img="./image-removebg-preview 1.png">
+          <img class="highlight" src="./image-removebg-preview 1.png" alt="Lương Tuấn Vũ">
+          <p>Lương Tuấn Vũ</p>
+        </div>
+        <div class="speaker" data-name="Nguyễn Đức Trọng" data-title="Chuyên gia phân tích đầu tư" data-content="Nội dung chi tiết của diễn giả Nguyễn Đức Trọng" data-img="./image-removebg-preview 1.png">
+          <img src="./image-removebg-preview 1.png" alt="Nguyễn Đức Trọng">
+          <p>Nguyễn Đức Trọng</p>
+        </div>
+        <div class="speaker" data-name="Nguyễn Thành Luân" data-title="Chuyên gia đào tạo tài chính" data-content="Nội dung chi tiết của diễn giả Nguyễn Thành Luân" data-img="./image-removebg-preview 1.png">
+          <img src="./image-removebg-preview 1.png" alt="Nguyễn Thành Luân">
+          <p>Nguyễn Thành Luân</p>
+        </div>
+        <div class="speaker" data-name="Lê Đức Phương" data-title="Cố vấn đầu tư chiến lược" data-content="Nội dung chi tiết của diễn giả Lê Đức Phương" data-img="./image-removebg-preview 1.png">
+          <img src="./image-removebg-preview 1.png" alt="Lê Đức Phương">
+          <p>Lê Đức Phương</p>
+        </div>
+      </div>
+</div>
+  
+  </div>
+</div>
+  <script>
+    const speakers = document.querySelectorAll('.speaker');
+    const mainSpeakerImg = document.getElementById('main-speaker-img');
+    const mainSpeakerName = document.getElementById('main-speaker-name');
+    const mainSpeakerTitle = document.getElementById('main-speaker-title');
+    const mainSpeakerContent = document.getElementById('main-speaker-content');
+
+    speakers.forEach(speaker => {
+      speaker.addEventListener('click', () => {
+        // Remove highlight from all speakers
+        speakers.forEach(s => s.querySelector('img').classList.remove('highlight'));
+        // Add highlight to selected speaker
+        speaker.querySelector('img').classList.add('highlight');
+
+        // Update main speaker information
+        mainSpeakerImg.src = speaker.dataset.img;
+        mainSpeakerName.textContent = speaker.dataset.name;
+        mainSpeakerTitle.textContent = speaker.dataset.title;
+        mainSpeakerContent.textContent = speaker.dataset.content;
+      });
+    });
+  </script>
+</body>
+</html>
